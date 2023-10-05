@@ -15,8 +15,14 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    let networkService = NetworkService()
 
     var body: some View {
+        
+        Button("Fetch Movies") {
+            getMovies()
+        }
+        .frame(width: 100.0, height: 70.0)
         NavigationView {
             List {
                 ForEach(items) { item in
@@ -39,9 +45,27 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
+          
         }
+
     }
 
+    
+    func getMovies(){
+        networkService.getMoviesList(from: "/movies.json") { result in
+            switch result {
+            case .success(let data):
+                // Handle successful response and data parsing here
+                print("Received data:", data)
+            case .failure(let error):
+                // Handle the error here
+                print("Error:", error)
+            }
+        }
+
+    }
+    
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
