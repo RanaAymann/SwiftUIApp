@@ -8,7 +8,32 @@
 import Foundation
 
 class NetworkService {
-    
+ 
+    func fetchData(completion: @escaping ([User]?, Error?) -> Void) {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil, NSError(domain: "YourAppErrorDomain", code: 1, userInfo: nil))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode([User].self, from: data)
+                DispatchQueue.main.async {
+                    completion(decodedData, nil)
+                }
+            } catch {
+                completion(nil, error)
+            }
+        }.resume()
+    }
+
     // Define the base URL for your API
     private var baseURL: String = "https://api.androidhive.info/json"
     var moviesArray : [MovieModel]?

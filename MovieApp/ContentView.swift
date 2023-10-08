@@ -16,39 +16,60 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     let networkService = NetworkService()
+    @State var res = [User]()
 
+       
     var body: some View {
-        
-        Button("Fetch Movies") {
-            getMovies()
-        }
-        .frame(width: 100.0, height: 70.0)
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+            List(res, id: \.id) { user in
+                Text(user.name)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-          
-        }
+            .onAppear {
+                networkService.fetchData { users, error in
+                  if let error = error {
+                      print("Error: \(error)")
+                      return
+                  }
+                  
+                  if let users = users {
+                      print("Users: \(users)")
+                      res = users
+                  }
+              }
 
-    }
+            }
+        }
+//    var body: some View {
+//
+//        Button("Fetch Movies") {
+//            getMovies()
+//        }
+//        .frame(width: 100.0, height: 70.0)
+//        NavigationView {
+//            List {
+//                ForEach(items) { item in
+//                    NavigationLink {
+//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                    } label: {
+//                        Text(item.timestamp!, formatter: itemFormatter)
+//                    }
+//                }
+//                .onDelete(perform: deleteItems)
+//            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    EditButton()
+//                }
+//                ToolbarItem {
+//                    Button(action: addItem) {
+//                        Label("Add Item", systemImage: "plus")
+//                    }
+//                }
+//            }
+//            Text("Select an item")
+//
+//        }
+//
+//    }
 
     
     func getMovies(){
@@ -62,7 +83,6 @@ struct ContentView: View {
                 print("Error:", error)
             }
         }
-
     }
     
     
