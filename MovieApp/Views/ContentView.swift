@@ -10,40 +10,59 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
     let networkService = NetworkService()
     @State var res = [User]()
-
-       
+    @State private var path = [String]()
+    
+    
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: MovieDetailsView()) {
-                List(res, id: \.id) { user in
-                    Text(user.name)
-                }
-                .onAppear {
-                    networkService.fetchData { users, error in
-                      if let error = error {
-                          print("Error: \(error)")
-                          return
-                      }
-                      
-                      if let users = users {
-                          print("Users: \(users)")
-                          res = users
-                      }
-                  }
-
+        NavigationStack(path: $path){
+            List{
+                NavigationLink("second page", value:"ABC" )
+                Button("navigate to xyz"){
+                    path.append("xyz")
+                }.navigationDestination(for: String.self) { string in
+                    VStack{
+                        Text(string)
+                        Button("pop to root"){
+                            // it will remove all strings from path array 
+                            path.removeAll()
+                            
+                        }
+                    }
                 }
             }
-            .navigationTitle("Home Page")
         }
-        }
+        
+    }
+        //   NavigationStack {
+//            NavigationLink(destination: MovieDetailsView()) {
+//                List(res, id: \.id) { user in
+//                    Text(user.name)
+//                }
+//                .onAppear {
+//                    networkService.fetchData { users, error in
+//                      if let error = error {
+//                          print("Error: \(error)")
+//                          return
+//                      }
+//
+//                      if let users = users {
+//                          print("Users: \(users)")
+//                          res = users
+//                      }
+//                  }
+//
+//                }
+//            }
+ //           .navigationTitle("Home Page")
 
+        
     
     
     func getMovies(){
