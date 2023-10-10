@@ -20,57 +20,31 @@ struct ContentView: View {
 
        
     var body: some View {
-            List(res, id: \.id) { user in
-                Text(user.name)
-            }
-            .onAppear {
-                networkService.fetchData { users, error in
-                  if let error = error {
-                      print("Error: \(error)")
-                      return
+        NavigationView {
+            NavigationLink(destination: MovieDetailsView()) {
+                List(res, id: \.id) { user in
+                    Text(user.name)
+                }
+                .onAppear {
+                    networkService.fetchData { users, error in
+                      if let error = error {
+                          print("Error: \(error)")
+                          return
+                      }
+                      
+                      if let users = users {
+                          print("Users: \(users)")
+                          res = users
+                      }
                   }
-                  
-                  if let users = users {
-                      print("Users: \(users)")
-                      res = users
-                  }
-              }
 
+                }
             }
+            .navigationTitle("Home Page")
         }
-//    var body: some View {
-//
-//        Button("Fetch Movies") {
-//            getMovies()
-//        }
-//        .frame(width: 100.0, height: 70.0)
-//        NavigationView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                    } label: {
-//                        Text(item.timestamp!, formatter: itemFormatter)
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//            Text("Select an item")
-//
-//        }
-//
-//    }
+        }
 
+    
     
     func getMovies(){
         networkService.getMoviesList(from: "/movies.json") { result in
