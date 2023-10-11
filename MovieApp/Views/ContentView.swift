@@ -17,35 +17,45 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
     let networkService = NetworkService()
     @State var res = [User]()
+    @State private var message = "Hello from ContentView"
 //    @State private var path = [String]()
     // NavigationPath is generic
         @State private var path = NavigationPath()
+     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationStack(path: $path){
-            Section("Users") {
-                List(res, id: \.id) { user in
-                    NavigationLink(value: user){
-                        Text(user.name)
-                    }
-                }.onAppear {
-                    networkService.fetchData { users, error in
-                        if let error = error {
-                            print("Error: \(error)")
-                            return
+        VStack{
+            NavigationStack(path: $path){
+                Section("Users") {
+                    List(res, id: \.id) { user in
+                        NavigationLink(value: user){
+                            Text(user.name)
+                        }
+                    }.onAppear {
+                        networkService.fetchData { users, error in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            
+                            if let users = users {
+                                print("Users: \(users)")
+                                res = users
+                            }
                         }
                         
-                        if let users = users {
-                            print("Users: \(users)")
-                            res = users
+                    }.navigationDestination(for: User.self) { user in
+                        Text(user.name)
+                        Button("pop to home"){
+                            path.removeLast(path.count)
                         }
                     }
-                    
-                }.navigationDestination(for: User.self) { user in
-                    Text(user.name)
-                    Button("pop to home"){
-                        path.removeLast(path.count)
-                    }
+                }
+                Divider().background(Color.gray) 
+                Section("Movie details") {
+                        NavigationLink(destination: MovieDetailsView(text: $message)){
+                            Text("go to movie details")
+                        }
                 }
             }
         }
