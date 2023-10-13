@@ -51,7 +51,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                Divider().background(Color.gray) 
+                Divider().background(Color.gray)
                 Section("Movie details") {
                         NavigationLink(destination: MovieDetailsView(text: $message)){
                             Text("go to movie details")
