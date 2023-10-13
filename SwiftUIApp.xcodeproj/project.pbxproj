@@ -26,7 +26,7 @@
 		1B3D3CD52AD4629B0089A760 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1B3D3CD72AD464C00089A760 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		1B3D3CD92AD924A20089A760 /* ViewModelBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBootcamp.swift; sourceTree = "<group>"; };
-		1BFA4B722ACD44FD00EA4370 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BFA4B722ACD44FD00EA4370 /* SwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFA4B752ACD44FD00EA4370 /* MovieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApp.swift; sourceTree = "<group>"; };
 		1BFA4B772ACD44FD00EA4370 /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		1BFA4B792ACD450000EA4370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		1BFA4B732ACD44FD00EA4370 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1BFA4B722ACD44FD00EA4370 /* MovieApp.app */,
+				1BFA4B722ACD44FD00EA4370 /* SwiftUIApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,9 +126,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1BFA4B712ACD44FD00EA4370 /* MovieApp */ = {
+		1BFA4B712ACD44FD00EA4370 /* SwiftUIApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1BFA4B852ACD450000EA4370 /* Build configuration list for PBXNativeTarget "MovieApp" */;
+			buildConfigurationList = 1BFA4B852ACD450000EA4370 /* Build configuration list for PBXNativeTarget "SwiftUIApp" */;
 			buildPhases = (
 				1BFA4B6E2ACD44FD00EA4370 /* Sources */,
 				1BFA4B6F2ACD44FD00EA4370 /* Frameworks */,
@@ -138,9 +138,9 @@
 			);
 			dependencies = (
 			);
-			name = MovieApp;
+			name = SwiftUIApp;
 			productName = MovieApp;
-			productReference = 1BFA4B722ACD44FD00EA4370 /* MovieApp.app */;
+			productReference = 1BFA4B722ACD44FD00EA4370 /* SwiftUIApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +158,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1BFA4B6D2ACD44FD00EA4370 /* Build configuration list for PBXProject "MovieApp" */;
+			buildConfigurationList = 1BFA4B6D2ACD44FD00EA4370 /* Build configuration list for PBXProject "SwiftUIApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,7 +171,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1BFA4B712ACD44FD00EA4370 /* MovieApp */,
+				1BFA4B712ACD44FD00EA4370 /* SwiftUIApp */,
 			);
 		};
 /* End PBXProject section */
@@ -382,7 +382,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1BFA4B6D2ACD44FD00EA4370 /* Build configuration list for PBXProject "MovieApp" */ = {
+		1BFA4B6D2ACD44FD00EA4370 /* Build configuration list for PBXProject "SwiftUIApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1BFA4B832ACD450000EA4370 /* Debug */,
@@ -391,7 +391,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1BFA4B852ACD450000EA4370 /* Build configuration list for PBXNativeTarget "MovieApp" */ = {
+		1BFA4B852ACD450000EA4370 /* Build configuration list for PBXNativeTarget "SwiftUIApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1BFA4B862ACD450000EA4370 /* Debug */,

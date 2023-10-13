@@ -27,6 +27,10 @@ class FruitViewModel : ObservableObject {
   @Published  var fruitArray : [FruitModel] = []
   @Published var isLoading: Bool = false
     
+    init() {
+        getFruits()
+    }
+    
     func getFruits(){
         let fruit1 = FruitModel(name: "Banana", count: 7)
         let fruit2 = FruitModel(name: "Grape", count: 20)
@@ -55,13 +59,19 @@ class FruitViewModel : ObservableObject {
 
 struct ViewModel: View {
     
-//    @State var fruitArray : [FruitModel] = [
-//    FruitModel(name: "Apple", count: 2)]
+    //    @State var fruitArray : [FruitModel] = [
+    //    FruitModel(name: "Apple", count: 2)]
     
     // this should have property that tells the view that it might be changing
     // @ObservedObject used for whole object ( class )
     // @State is used for variables only
- @ObservedObject  var fruitViewModel : FruitViewModel  = FruitViewModel()
+    // @ObservedObject  makes the view reloads , rerenders
+    //   @ObservedObject  var fruitViewModel : FruitViewModel  = FruitViewModel()
+    
+    //  @StateObject makes fruitViewModel presist (without recreating it)
+    // USE IT N CREATION / INIT -> first time creating this object
+    @StateObject  var fruitViewModel : FruitViewModel  = FruitViewModel()
+    // is subViews -> passing it -> USE @ObservedObject
     
     var body: some View {
         NavigationView{
@@ -77,21 +87,55 @@ struct ViewModel: View {
                         }
                         // swipe to delete in forEach
                     }.onDelete(perform: fruitViewModel.deleteFruit)
-                        .listStyle(GroupedListStyle())
                 }
-            }.navigationTitle("Fruit List")
-                .onAppear{
-                    // call function to get list of fruits then append it to fruitArray
-                    fruitViewModel.getFruits()
-                }
+            }.listStyle(GroupedListStyle())
+                .navigationTitle("Fruit List")
+                .navigationBarItems(trailing:
+                                        NavigationLink(destination: SecondScreen(fruitViewModel:fruitViewModel), label: {
+                    Image(systemName: "arrow.right").font(.title)
+
+                }))
+            // it will be called everytime the screen appears
+//                .onAppear{
+//                    // call function to get list of fruits then append it to fruitArray
+//                    fruitViewModel.getFruits()
+//                }
         }
     }
+}
+   
     
+
+
+
+struct SecondScreen: View {
+    
+    @Environment(\.presentationMode) var presentaionMode
+    @ObservedObject var fruitViewModel : FruitViewModel
+    
+    
+    var body: some View {
+        ZStack{
+            Color.green.ignoresSafeArea()
+            VStack{
+                ForEach(fruitViewModel.fruitArray) { fruit in
+                    Text(fruit.name).foregroundColor(.white).font(.headline)
+                }
+            }
+//            Button {
+//                presentaionMode.wrappedValue.dismiss()
+//            } label: {
+//                Text("GO BACK").foregroundColor(.white).font(.largeTitle).fontWeight(.semibold)
+//            }
+
+        }
+    }
 }
 
 
 struct ViewModel_Previews: PreviewProvider {
     static var previews: some View {
         ViewModel().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//        SecondScreen()
     }
 }
