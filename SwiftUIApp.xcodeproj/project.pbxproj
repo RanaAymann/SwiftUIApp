@@ -11,6 +11,7 @@
 		1B3D3CD62AD4629B0089A760 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D3CD52AD4629B0089A760 /* Router.swift */; };
 		1B3D3CD82AD464C00089A760 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D3CD72AD464C00089A760 /* MovieDetails.swift */; };
 		1B3D3CDA2AD924A20089A760 /* ViewModelBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D3CD92AD924A20089A760 /* ViewModelBootcamp.swift */; };
+		1B3D3CDC2ADBC6160089A760 /* EnvironmentObjectBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D3CDB2ADBC6160089A760 /* EnvironmentObjectBootcamp.swift */; };
 		1BFA4B762ACD44FD00EA4370 /* MovieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA4B752ACD44FD00EA4370 /* MovieApp.swift */; };
 		1BFA4B782ACD44FD00EA4370 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFA4B772ACD44FD00EA4370 /* ContentView.swift */; };
 		1BFA4B7A2ACD450000EA4370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BFA4B792ACD450000EA4370 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		1B3D3CD52AD4629B0089A760 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1B3D3CD72AD464C00089A760 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		1B3D3CD92AD924A20089A760 /* ViewModelBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBootcamp.swift; sourceTree = "<group>"; };
+		1B3D3CDB2ADBC6160089A760 /* EnvironmentObjectBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentObjectBootcamp.swift; sourceTree = "<group>"; };
 		1BFA4B722ACD44FD00EA4370 /* SwiftUIApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BFA4B752ACD44FD00EA4370 /* MovieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApp.swift; sourceTree = "<group>"; };
 		1BFA4B772ACD44FD00EA4370 /* ContentView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				1B3D3CD92AD924A20089A760 /* ViewModelBootcamp.swift */,
+				1B3D3CDB2ADBC6160089A760 /* EnvironmentObjectBootcamp.swift */,
 				1B3D3CD22AD462310089A760 /* Router */,
 				1BFA4B752ACD44FD00EA4370 /* MovieApp.swift */,
 				1B3D3CD12AD461FC0089A760 /* Views */,
@@ -202,6 +205,7 @@
 				1BFA4B822ACD450000EA4370 /* MovieApp.xcdatamodeld in Sources */,
 				1BFA4B762ACD44FD00EA4370 /* MovieApp.swift in Sources */,
 				1B38634D2AD2C604009B11DF /* User.swift in Sources */,
+				1B3D3CDC2ADBC6160089A760 /* EnvironmentObjectBootcamp.swift in Sources */,
 				1B3D3CD82AD464C00089A760 /* MovieDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
